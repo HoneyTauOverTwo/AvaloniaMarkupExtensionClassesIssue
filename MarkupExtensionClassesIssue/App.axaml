@@ -1,0 +1,44 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MarkupExtensionClassesIssue.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+	<Application.Resources>
+		<SolidColorBrush x:Key="SystemAccentColorBrush" Color="{DynamicResource SystemAccentColor}"/>
+	</Application.Resources>
+    <Application.Styles>
+        <FluentTheme />
+		
+		<Style Selector="Button.m">
+			<!--                      left, top, right, bottom -->
+			<Setter Property="Margin" Value="3,5,3,5"/>
+		</Style>
+		
+		<Style Selector="Button.bordered">
+			<Style Selector="^ /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="{DynamicResource ButtonBackground}" />
+				<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource ButtonForeground}" />
+			</Style>
+
+			<Style Selector="^:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="{DynamicResource ButtonBackgroundPointerOver}" />
+				<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPointerOver}" />
+			</Style>
+
+			<Style Selector="^:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="{DynamicResource ButtonBackgroundPressed}" />
+				<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource ButtonForegroundPressed}" />
+			</Style>
+
+			<Style Selector="^:disabled /template/ ContentPresenter#PART_ContentPresenter">
+				<Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+				<Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColorBrush}" />
+				<Setter Property="Foreground" Value="{DynamicResource ButtonForegroundDisabled}" />
+			</Style>
+		</Style>
+    </Application.Styles>
+</Application>

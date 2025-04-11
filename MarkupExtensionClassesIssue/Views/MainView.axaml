@@ -1,0 +1,50 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:MarkupExtensionClassesIssue.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="MarkupExtensionClassesIssue.Views.MainView"
+			 xmlns:extensions="clr-namespace:MarkupExtensionClassesIssue.MarkupExtensions"
+			 xmlns:lang="clr-namespace:MarkupExtensionClassesIssue.Lang"
+             x:DataType="vm:MainViewModel">
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<Grid ColumnDefinitions="auto,auto"
+		  RowDefinitions="auto,auto">
+		
+		<Button x:Name="_markupExtensionButton"
+				Content="Button with Classes set by the MarkupExtension"
+				Grid.Row="0"
+				Grid.Column="0">
+			<Button.Classes>
+				<extensions:StringCollectionMerger>
+					<extensions:StringCollectionMerger.Items>
+						<extensions:StringItem Value="{x:Static lang:Resources.BorderedButtonClassName}"/>
+						<extensions:StringItem Value="{x:Static lang:Resources.MarginButtonClassName}"/>
+					</extensions:StringCollectionMerger.Items>
+				</extensions:StringCollectionMerger>
+			</Button.Classes>
+		</Button>
+
+		<TextBlock x:Name="_markupExtensionButtonTextBlock"
+				   Grid.Row="0"
+				   Grid.Column="1"/>
+
+		<Button x:Name="_regularButton"
+				Content="Button with manually typed Classes"
+				Classes="bordered m"
+				Grid.Row="1"
+				Grid.Column="0"/>
+
+		<TextBlock x:Name="_regularButtonTextBlock"
+				   Grid.Row="1"
+				   Grid.Column="1"/>
+
+	</Grid>
+    
+</UserControl>
